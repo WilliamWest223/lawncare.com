@@ -1,0 +1,17 @@
+# dependencies
+node_modules/
+
+# next.js
+.next/
+out/
+
+# env
+.env
+.env.local
+
+# runtime data (leads, bookings, quotes)
+data/
+
+# misc
+.DS_Store
+*.log

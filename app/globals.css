@@ -257,6 +257,7 @@ img, svg { display: block; max-width: 100%; }
 }
 .service-card {
   position: relative;
+  display: block;
   border: 1px solid var(--line);
   border-radius: var(--radius);
   background: var(--paper);
@@ -287,6 +288,17 @@ img, svg { display: block; max-width: 100%; }
 .service-card:hover .service-icon { background: var(--pine); color: var(--gold); transform: rotate(-6deg) scale(1.06); }
 .service-card h3 { font-size: 1.35rem; margin-bottom: 10px; }
 .service-card p { color: rgba(20,35,26,0.68); font-size: 15.5px; }
+.service-cta {
+  display: inline-block;
+  margin-top: 16px;
+  font-weight: 700;
+  font-size: 14px;
+  color: var(--pine);
+  border-bottom: 2px solid var(--gold);
+  padding-bottom: 2px;
+  transition: transform 0.3s var(--ease);
+}
+.service-card:hover .service-cta { transform: translateX(4px); }
 .service-price {
   margin-top: 18px;
   font-weight: 700;

@@ -18,12 +18,15 @@ export default function BeforeAfter() {
     <div
       className="ba-wrap"
       ref={wrapRef}
-      onMouseDown={(e) => { dragging.current = true; move(e.clientX); }}
-      onMouseMove={(e) => dragging.current && move(e.clientX)}
-      onMouseUp={() => (dragging.current = false)}
-      onMouseLeave={() => (dragging.current = false)}
-      onTouchStart={(e) => move(e.touches[0].clientX)}
-      onTouchMove={(e) => move(e.touches[0].clientX)}
+      style={{ touchAction: "none" }}
+      onPointerDown={(e) => {
+        dragging.current = true;
+        e.currentTarget.setPointerCapture(e.pointerId);
+        move(e.clientX);
+      }}
+      onPointerMove={(e) => dragging.current && move(e.clientX)}
+      onPointerUp={() => (dragging.current = false)}
+      onPointerCancel={() => (dragging.current = false)}
     >
       <LawnScene variant="scruffy" stripes={false} flowers={false} trees={1} />
       <div className="ba-after" style={{ clipPath: `inset(0 ${100 - pos}% 0 0)` }}>

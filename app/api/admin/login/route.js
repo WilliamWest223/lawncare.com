@@ -1,6 +1,11 @@
 import { NextResponse } from "next/server";
 import { checkPassword, sessionToken } from "@/lib/auth";
 
+export async function GET(request) {
+  const authed = request.cookies.get("llc_admin")?.value === sessionToken();
+  return NextResponse.json({ authed });
+}
+
 export async function POST(request) {
   const { password } = await request.json().catch(() => ({}));
   if (!checkPassword(password)) {

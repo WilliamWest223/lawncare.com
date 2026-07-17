@@ -67,7 +67,7 @@ export default function Home() {
           <div className="services-grid">
             {SERVICES.map((s, i) => (
               <Reveal key={s.id} delay={i % 3}>
-                <div className="service-card" data-index={`0${i + 1}`}>
+                <Link href={`/quote?service=${s.id}`} className="service-card" data-index={`0${i + 1}`}>
                   <div className="service-icon">
                     <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.7" strokeLinecap="round" strokeLinejoin="round">
                       <path d={s.icon} />
@@ -76,7 +76,8 @@ export default function Home() {
                   <h3>{s.name}</h3>
                   <p>{s.desc}</p>
                   <div className="service-price">{s.price}</div>
-                </div>
+                  <span className="service-cta">Get a price →</span>
+                </Link>
               </Reveal>
             ))}
           </div>

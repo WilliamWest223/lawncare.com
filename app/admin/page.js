@@ -32,7 +32,13 @@ export default function AdminPage() {
     setChecked(true);
   };
 
-  useEffect(() => { load(); }, []);
+  useEffect(() => {
+    // Check session first so unauthenticated visits don't trigger a 401.
+    fetch("/api/admin/login")
+      .then((r) => r.json())
+      .then((d) => (d.authed ? load() : setChecked(true)))
+      .catch(() => setChecked(true));
+  }, []);
 
   const login = async (e) => {
     e.preventDefault();
@@ -86,7 +92,7 @@ export default function AdminPage() {
               Sign in
             </button>
             <p style={{ fontSize: 13, opacity: 0.55, marginTop: 16 }}>
-              Default password: <code>lewis2026</code> — change it in <code>.env.local</code>.
+              Password is set via <code>ADMIN_PASSWORD</code> in <code>.env</code>.
             </p>
           </form>
         </div>

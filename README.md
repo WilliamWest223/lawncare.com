@@ -23,8 +23,9 @@ Open http://localhost:3000.
 
 ## Admin access
 
-Visit `/admin`. Default password is `lewis2026`.
-To change it, copy `.env.example` to `.env.local` and set `ADMIN_PASSWORD`.
+Visit `/admin`. There is no default password: copy `.env.example` to `.env.local`
+and set `ADMIN_PASSWORD` (and set the same variable in your host's environment).
+If it is unset, the admin area refuses every login.
 
 ## Data storage
 
